@@ -35,30 +35,33 @@ class _AllCategoryState extends State<AllCategory> {
                       crossAxisSpacing: 20.0,
                       mainAxisSpacing: 20.0),
                   itemBuilder: (BuildContext context, int index) {
-                    Map wpquotes = snapshot.data![index] as Map;
-                    var imageurl = wpquotes['_embedded']['wp:featuredmedia'][0]
-                        ['source_url'];
+                    Map wpquotes = snapshot.data![index];
+                    var imageurl = wpquotes['x_featured_media'];
 
                     //Center(child: Text('Hi'));
                     return GestureDetector(
                       onTap: () {
-                        // Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //         builder: (Context) => CategoryDetails()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (Context) => CategoryDetails()));
                       },
                       child: Stack(children: [
                         Container(
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            boxShadow: [
-                              //  BoxShadow(color: Colors.black12, offset: Offset(0, 3))
-                            ],
-                            image: DecorationImage(
-                              image: NetworkImage(imageurl),
-                            ),
-                            //fit: BoxFit.cover),
-                          ),
+                              borderRadius: BorderRadius.circular(15),
+                              boxShadow: [
+                                //  BoxShadow(color: Colors.black12, offset: Offset(0, 3))
+                              ],
+                              image: imageurl != null
+                                  ? DecorationImage(
+                                      image: NetworkImage(imageurl),
+                                      fit: BoxFit.cover,
+                                    )
+                                  : DecorationImage(
+                                      image:
+                                          AssetImage('assets/images/fam.jpg'),
+                                      fit: BoxFit.cover)),
                           child: Container(
                             margin: EdgeInsets.only(top: 90),
                             decoration: BoxDecoration(
@@ -81,7 +84,7 @@ class _AllCategoryState extends State<AllCategory> {
                           child: Container(
                             alignment: Alignment.center,
                             child: Text(
-                              wpquotes['title']['rendered'],
+                              wpquotes['x_categories'],
                               style: TextStyle(
                                   //fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w600,
