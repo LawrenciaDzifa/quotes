@@ -49,19 +49,20 @@ class _AllCategoryState extends State<AllCategory> {
                       child: Stack(children: [
                         Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              boxShadow: [
-                                //  BoxShadow(color: Colors.black12, offset: Offset(0, 3))
-                              ],
-                              image: imageurl != null
-                                  ? DecorationImage(
-                                      image: NetworkImage(imageurl),
-                                      fit: BoxFit.cover,
-                                    )
-                                  : DecorationImage(
-                                      image:
-                                          AssetImage('assets/images/fam.jpg'),
-                                      fit: BoxFit.cover)),
+                            borderRadius: BorderRadius.circular(15),
+                            boxShadow: [
+                              //  BoxShadow(color: Colors.black12, offset: Offset(0, 3))
+                            ],
+                            image: imageurl != null
+                                ? DecorationImage(
+                                    image: NetworkImage(imageurl),
+                                    fit: BoxFit.cover,
+                                  )
+                                : DecorationImage(
+                                    image: AssetImage(
+                                        'assets/images/placeholder-image.png'),
+                                    fit: BoxFit.cover),
+                          ),
                           child: Container(
                             margin: EdgeInsets.only(top: 90),
                             decoration: BoxDecoration(
