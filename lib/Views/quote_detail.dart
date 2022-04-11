@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:quotes/Modules/quote_category.dart';
 
-class CategoryDetails extends StatefulWidget {
-  const CategoryDetails({Key? key}) : super(key: key);
+class QuoteDetails extends StatefulWidget {
+  const QuoteDetails({Key? key}) : super(key: key);
 
   @override
-  _CategoryDetailsState createState() => _CategoryDetailsState();
+  _QuoteDetailsState createState() => _QuoteDetailsState();
 }
 
-class _CategoryDetailsState extends State<CategoryDetails> {
+class _QuoteDetailsState extends State<QuoteDetails> {
   late List<QuoteCategory> _allCategories;
   int index = categoryNumber;
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quotes/Modules/quote_category.dart';
-import 'package:quotes/Views/category_details.dart';
+import 'package:quotes/Views/category_detail.dart';
+import 'package:quotes/Views/quote_detail.dart';
 import 'package:quotes/Modules/wp_api.dart';
 
 class AllCategory extends StatefulWidget {
@@ -9,21 +10,22 @@ class AllCategory extends StatefulWidget {
 }
 
 class _AllCategoryState extends State<AllCategory> {
-  //late List<QuoteCategory> _allCategoryItems;
+  // apiCalls();
 
-  //@override
+  // @override
   // void initState() {
-  //   _allCategoryItems = getAllCategories();
   //   super.initState();
   // }
 
   // var color;
   @override
   Widget build(BuildContext context) {
+    //apiCalls();
+
     return Scaffold(
         body: Container(
       child: FutureBuilder<List>(
-          future: fetchQuote(),
+          future: fetchQuoteCategory(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return GridView.builder(
@@ -36,7 +38,7 @@ class _AllCategoryState extends State<AllCategory> {
                       mainAxisSpacing: 20.0),
                   itemBuilder: (BuildContext context, int index) {
                     Map wpquotes = snapshot.data![index];
-                    var imageurl = wpquotes['x_featured_media'];
+                    var imageurl = wpquotes['acf']['hungry_image'];
 
                     //Center(child: Text('Hi'));
                     return GestureDetector(
@@ -44,7 +46,7 @@ class _AllCategoryState extends State<AllCategory> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (Context) => CategoryDetails()));
+                                builder: (Context) => CategoryDetail()));
                       },
                       child: Stack(children: [
                         Container(
@@ -85,7 +87,7 @@ class _AllCategoryState extends State<AllCategory> {
                           child: Container(
                             alignment: Alignment.center,
                             child: Text(
-                              wpquotes['x_categories'],
+                              wpquotes['name'],
                               style: TextStyle(
                                   //fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w600,
