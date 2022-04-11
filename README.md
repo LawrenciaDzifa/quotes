@@ -1,6 +1,9 @@
 # quotes
 
 A new Flutter project.
+<div align="center">
+    <img src="ss/ss1.png" width="400px" height="750" /> 
+</div>
 
 ## Getting Started
 
