@@ -3,6 +3,7 @@ import 'package:quotes/Modules/quote_category.dart';
 import 'package:quotes/Views/category_detail.dart';
 import 'package:quotes/Views/quote_detail.dart';
 import 'package:quotes/Modules/wp_api.dart';
+import 'package:quotes/quote_model.dart';
 
 class AllCategory extends StatefulWidget {
   @override
@@ -12,10 +13,11 @@ class AllCategory extends StatefulWidget {
 class _AllCategoryState extends State<AllCategory> {
   // apiCalls();
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  // }
+  @override
+  void initState() {
+    super.initState();
+    WpApi().fetchQuoteDetail();
+  }
 
   // var color;
   @override
@@ -24,8 +26,8 @@ class _AllCategoryState extends State<AllCategory> {
 
     return Scaffold(
         body: Container(
-      child: FutureBuilder<List>(
-          future: fetchQuoteCategory(),
+      child: FutureBuilder<List<QuoteModel>>(
+          future: WpApi().fetchQuoteCategory(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return GridView.builder(
@@ -37,8 +39,8 @@ class _AllCategoryState extends State<AllCategory> {
                       crossAxisSpacing: 20.0,
                       mainAxisSpacing: 20.0),
                   itemBuilder: (BuildContext context, int index) {
-                    Map wpquotes = snapshot.data![index];
-                    var imageurl = wpquotes['acf']['hungry_image'];
+                    final wpquotes = snapshot.data![index];
+                    var imageurl = wpquotes.imageurl;
 
                     //Center(child: Text('Hi'));
                     return GestureDetector(
@@ -51,20 +53,19 @@ class _AllCategoryState extends State<AllCategory> {
                       child: Stack(children: [
                         Container(
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            boxShadow: [
-                              //  BoxShadow(color: Colors.black12, offset: Offset(0, 3))
-                            ],
-                            image: imageurl != null
-                                ? DecorationImage(
-                                    image: NetworkImage(imageurl),
-                                    fit: BoxFit.cover,
-                                  )
-                                : DecorationImage(
-                                    image: AssetImage(
-                                        'assets/images/placeholder-image.png'),
-                                    fit: BoxFit.cover),
-                          ),
+                              borderRadius: BorderRadius.circular(15),
+                              boxShadow: [
+                                //  BoxShadow(color: Colors.black12, offset: Offset(0, 3))
+                              ],
+                              image: imageurl == null
+                                  ? DecorationImage(
+                                      image: AssetImage(
+                                          'assets/images/placeholder-image.png'),
+                                      fit: BoxFit.cover)
+                                  : DecorationImage(
+                                      image: NetworkImage(imageurl),
+                                      fit: BoxFit.cover,
+                                    )),
                           child: Container(
                             margin: EdgeInsets.only(top: 90),
                             decoration: BoxDecoration(
@@ -87,7 +88,7 @@ class _AllCategoryState extends State<AllCategory> {
                           child: Container(
                             alignment: Alignment.center,
                             child: Text(
-                              wpquotes['name'],
+                              wpquotes.name!,
                               style: TextStyle(
                                   //fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w600,
