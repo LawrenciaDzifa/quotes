@@ -4,8 +4,8 @@ import 'package:quotes/Views/home.dart';
 import 'package:quotes/Views/quote_detail.dart';
 
 class CategoryDetail extends StatefulWidget {
-  const CategoryDetail({Key? key}) : super(key: key);
-
+  const CategoryDetail({Key? key, required this.categoryId}) : super(key: key);
+  final int categoryId;
   @override
   State<CategoryDetail> createState() => _CategoryDetailState();
 }
@@ -52,8 +52,11 @@ class _CategoryDetailState extends State<CategoryDetail> {
           // ),
           Expanded(
             child: FutureBuilder<List>(
-                future: WpApi().fetchQuoteDetail(),
+                future: WpApi().fetchQuoteByCategory(widget.categoryId),
                 builder: (context, snapshot) {
+                  // if (snapshot.data!.isEmpty) {
+                  //   return Text('No Posts Available');
+                  // }
                   if (snapshot.hasData) {
                     return ListView.builder(
                         physics: ScrollPhysics(),
@@ -68,7 +71,8 @@ class _CategoryDetailState extends State<CategoryDetail> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (Context) => QuoteDetails()));
+                                      builder: (Context) => QuoteDetails(
+                                          quoteId: wpquotesDetail.id!)));
                             },
                             child: Container(
                               height: MediaQuery.of(context).size.height / 6,
@@ -99,7 +103,7 @@ class _CategoryDetailState extends State<CategoryDetail> {
                                     horizontal: 25.0),
                                 child: Center(
                                   child: Text(
-                                    wpquotesDetail.title,
+                                    wpquotesDetail.title.rendered,
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 25,
@@ -112,7 +116,12 @@ class _CategoryDetailState extends State<CategoryDetail> {
                           );
                         });
                   } else
-                    return Center(child: CircularProgressIndicator());
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  // Text('No Posts Available',
+                  //     style: TextStyle(
+                  //         fontSize: 25, fontWeight: FontWeight.w600)));
                 }),
           ),
           SizedBox(

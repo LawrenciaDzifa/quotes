@@ -5,8 +5,8 @@ import 'package:quotes/Widgets/quote_card.dart';
 import 'package:quotes/post_model.dart';
 
 class QuoteDetails extends StatefulWidget {
-  const QuoteDetails({Key? key}) : super(key: key);
-
+  const QuoteDetails({Key? key, required this.quoteId}) : super(key: key);
+  final int quoteId;
   @override
   _QuoteDetailsState createState() => _QuoteDetailsState();
 }
@@ -18,12 +18,12 @@ class _QuoteDetailsState extends State<QuoteDetails> {
   @override
   void initState() {
     super.initState();
-    WpApi().fetchQuoteDetail();
+    // WpApi().fetchQuoteDetail();
   }
 
   @override
   Widget build(BuildContext context) {
-    final wpquotesDetail = WpApi().fetchQuoteDetail();
+    // final wpquotesDetail = WpApi().fetchQuoteDetail();
     // var imageurl = wpquotesDetail.xFeaturedMedia;
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -36,7 +36,7 @@ class _QuoteDetailsState extends State<QuoteDetails> {
       ),
       body: Container(
         child: FutureBuilder<List<PostModel>>(
-            future: WpApi().fetchQuoteDetail(),
+            future: WpApi().fetchQuoteDetail(widget.quoteId),
             builder: (context, snapshot) {
               if (snapshot.hasData == false) {
                 return Center(child: CircularProgressIndicator());
