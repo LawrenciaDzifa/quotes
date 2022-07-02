@@ -16,7 +16,7 @@ class _AllCategoryState extends State<AllCategory> {
   @override
   void initState() {
     super.initState();
-    WpApi().fetchQuoteDetail();
+    //WpApi().fetchQuoteDetail();
   }
 
   // var color;
@@ -39,8 +39,8 @@ class _AllCategoryState extends State<AllCategory> {
                       crossAxisSpacing: 20.0,
                       mainAxisSpacing: 20.0),
                   itemBuilder: (BuildContext context, int index) {
-                    final wpquotes = snapshot.data![index];
-                    var imageurl = wpquotes.imageurl;
+                    final wpcategory = snapshot.data![index];
+                    var imageurl = wpcategory.imageurl;
 
                     //Center(child: Text('Hi'));
                     return GestureDetector(
@@ -48,7 +48,9 @@ class _AllCategoryState extends State<AllCategory> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (Context) => CategoryDetail()));
+                                builder: (Context) => CategoryDetail(
+                                      categoryId: wpcategory.id!,
+                                    )));
                       },
                       child: Stack(children: [
                         Container(
@@ -88,7 +90,7 @@ class _AllCategoryState extends State<AllCategory> {
                           child: Container(
                             alignment: Alignment.center,
                             child: Text(
-                              wpquotes.name!,
+                              wpcategory.name!,
                               style: TextStyle(
                                   //fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w600,

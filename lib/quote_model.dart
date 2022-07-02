@@ -4,9 +4,6 @@ class QuoteModel {
   String? description;
   String? link;
   String? name;
-  String? slug;
-  String? taxonomy;
-  int? parent;
   String? imageurl;
 
   QuoteModel(
@@ -15,9 +12,6 @@ class QuoteModel {
       this.description,
       this.link,
       this.name,
-      this.slug,
-      this.taxonomy,
-      this.parent,
       this.imageurl});
 
   QuoteModel.fromJson(Map<String, dynamic> json) {
@@ -26,9 +20,6 @@ class QuoteModel {
     description = json['description'];
     link = json['link'];
     name = json['name'];
-    slug = json['slug'];
-    taxonomy = json['taxonomy'];
-    parent = json['parent'];
     imageurl = json['acf']['hungry_image'];
   }
 
@@ -39,9 +30,6 @@ class QuoteModel {
     data['description'] = this.description;
     data['link'] = this.link;
     data['name'] = this.name;
-    data['slug'] = this.slug;
-    data['taxonomy'] = this.taxonomy;
-    data['parent'] = this.parent;
 
     return data;
   }
