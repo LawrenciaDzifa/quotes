@@ -106,8 +106,8 @@ class _CategoryDetailState extends State<CategoryDetail> {
                                     wpquotesDetail.title.rendered,
                                     style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.w600,
+                                      fontSize: 23,
+                                      //fontWeight: FontWeight.w400,
                                     ),
                                   ),
                                 ),

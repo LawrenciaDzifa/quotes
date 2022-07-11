@@ -4,6 +4,7 @@ import 'package:quotes/Modules/wp_api.dart';
 import 'package:quotes/Widgets/quote_card.dart';
 import 'package:quotes/post_model.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:html/parser.dart';
 
 class QuoteDetails extends StatefulWidget {
   const QuoteDetails({Key? key, required this.quoteId}) : super(key: key);
@@ -42,6 +43,7 @@ class _QuoteDetailsState extends State<QuoteDetails> {
                 itemBuilder: (context, index) {
                   final wpquote = snapshot.data![index];
                   var imageurl = wpquote.xFeaturedMedia;
+                  var content = parse(wpquote.content!.rendered).body!.text;
 
                   return SingleChildScrollView(
                     child: Column(
@@ -97,7 +99,7 @@ class _QuoteDetailsState extends State<QuoteDetails> {
                               // ],
                             ),
                             child: Text(
-                              'Just one small positive thought in the morning can change your whole day. Just one small positive thought in the morning can change your whole day',
+                              content,
                               style: TextStyle(
                                 fontSize: 25,
                               ),

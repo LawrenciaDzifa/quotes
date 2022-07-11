@@ -20,7 +20,7 @@ class CategoryModel {
     description = json['description'];
     link = json['link'];
     name = json['name'];
-    imageurl = json['acf']['hungry_image'];
+    imageurl = json['acf']['quote_image'];
   }
 
   Map<String, dynamic> toJson() {
@@ -41,12 +41,12 @@ class Acf {
   Acf({this.hungryImage});
 
   Acf.fromJson(Map<String, dynamic> json) {
-    hungryImage = json['hungry_image'];
+    hungryImage = json['quote_image'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['hungry_image'] = this.hungryImage;
+    data['quote_image'] = this.hungryImage;
     return data;
   }
 }

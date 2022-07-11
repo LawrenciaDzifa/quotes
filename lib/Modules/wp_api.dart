@@ -11,7 +11,7 @@ import '../post_by_category.dart';
 class WpApi {
   Future<List<PostModel>> fetchQuoteDetail(int quoteId) async {
     final response = await http.get(Uri.parse(
-      "https://kwekubright.com/hungry_project/wp-json/wp/v2/posts?include=${quoteId}",
+      "https://kwekubright.com/quotes_app/wp-json/wp/v2/posts?include=${quoteId}",
     ));
 
     if (response.statusCode == 200) {
@@ -26,7 +26,7 @@ class WpApi {
 
   Future<List<CategoryModel>> fetchQuoteCategory() async {
     final response = await http.get(Uri.parse(
-      "https://kwekubright.com/hungry_project/wp-json/wp/v2/categories",
+      "https://kwekubright.com/quotes_app/wp-json/wp/v2/categories",
     ));
 
     if (response.statusCode == 200) {
@@ -41,7 +41,7 @@ class WpApi {
 
   Future<List<PostByCategory>> fetchQuoteByCategory(int categoryId) async {
     final response = await http.get(Uri.parse(
-      "https://kwekubright.com/hungry_project/wp-json/wp/v2/posts?categories=${categoryId}",
+      "https://kwekubright.com/quotes_app/wp-json/wp/v2/posts?categories=${categoryId}",
     ));
 
     if (response.statusCode == 200) {
