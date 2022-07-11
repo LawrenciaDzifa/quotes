@@ -1,4 +1,4 @@
-class QuoteModel {
+class CategoryModel {
   int? id;
   int? count;
   String? description;
@@ -6,7 +6,7 @@ class QuoteModel {
   String? name;
   String? imageurl;
 
-  QuoteModel(
+  CategoryModel(
       {this.id,
       this.count,
       this.description,
@@ -14,7 +14,7 @@ class QuoteModel {
       this.name,
       this.imageurl});
 
-  QuoteModel.fromJson(Map<String, dynamic> json) {
+  CategoryModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     count = json['count'];
     description = json['description'];

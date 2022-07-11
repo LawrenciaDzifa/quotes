@@ -3,7 +3,7 @@ import 'package:quotes/Modules/quote_category.dart';
 import 'package:quotes/Views/category_detail.dart';
 import 'package:quotes/Views/quote_detail.dart';
 import 'package:quotes/Modules/wp_api.dart';
-import 'package:quotes/quote_model.dart';
+import 'package:quotes/category_model.dart';
 
 class AllCategory extends StatefulWidget {
   @override
@@ -26,7 +26,7 @@ class _AllCategoryState extends State<AllCategory> {
 
     return Scaffold(
         body: Container(
-      child: FutureBuilder<List<QuoteModel>>(
+      child: FutureBuilder<List<CategoryModel>>(
           future: WpApi().fetchQuoteCategory(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {

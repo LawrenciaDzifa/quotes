@@ -17,7 +17,7 @@ class _QuoteCardState extends State<QuoteCard> {
         children: [
           Container(
             padding: EdgeInsets.symmetric(horizontal: 15.0),
-            height: MediaQuery.of(context).size.height / 4,
+            height: MediaQuery.of(context).size.height / 3,
             decoration: BoxDecoration(
               image: DecorationImage(
                   image: AssetImage('assets/images/placeholder-image.png'),

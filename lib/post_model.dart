@@ -7,7 +7,7 @@ class PostModel {
   String? slug;
   String? type;
   String? link;
-  String? title;
+  Guid? title;
   Guid? content;
   Excerpt? excerpt;
 
@@ -40,8 +40,8 @@ class PostModel {
     slug = json['slug'];
     type = json['type'];
     link = json['link'];
-    // title = json['title'] != null ? new Guid.fromJson(json['title']) : null;
-    title = json['title']['rendered'];
+    title = json['title'] != null ? new Guid.fromJson(json['title']) : null;
+    //title = json['title']['rendered'];
 
     content =
         json['content'] != null ? new Guid.fromJson(json['content']) : null;
@@ -67,9 +67,9 @@ class PostModel {
     data['slug'] = this.slug;
     data['type'] = this.type;
     data['link'] = this.link;
-    // if (this.title != null) {
-    //   data['title'] = this.title!.toJson();
-    // }
+    if (this.title != null) {
+      data['title'] = this.title!.toJson();
+    }
     if (this.content != null) {
       data['content'] = this.content!.toJson();
     }

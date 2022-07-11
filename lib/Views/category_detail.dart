@@ -93,9 +93,9 @@ class _CategoryDetailState extends State<CategoryDetail> {
                                         image: AssetImage(
                                             'assets/images/placeholder-image.png'),
                                         fit: BoxFit.cover,
-                                        // colorFilter: ColorFilter.mode(
-                                        //     Colors.black.withOpacity(0.6),
-                                        //     BlendMode.darken),
+                                        colorFilter: ColorFilter.mode(
+                                            Colors.black.withOpacity(0.7),
+                                            BlendMode.darken),
                                       ),
                               ),
                               child: Padding(
