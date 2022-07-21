@@ -2,9 +2,11 @@
 
 A new Flutter project.
 <div align="center">
-    <img src="/ss/ss.png" width="400px" height="750" />
+    <img src="/ss/ss.png" width="350px" height="750" />
     <img src="/ss/ss2.png" width="400px" height="750" />
     <img src="/ss/ss3.png" width="400px" height="750" />
+    <img src="/ss/ss4.png" width="400px" height="750" />
+
 </div>
 
 ## Getting Started
