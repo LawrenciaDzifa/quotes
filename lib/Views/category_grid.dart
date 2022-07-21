@@ -48,8 +48,8 @@ class _AllCategoryState extends State<AllCategory> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (Context) => CategoryDetail(
-                                      categoryId: wpcategory.id!,
+                                builder: (context) => CategoryDetail(
+                                      category: wpcategory,
                                     )));
                       },
                       child: Stack(children: [

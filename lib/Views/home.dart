@@ -7,6 +7,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //extendBodyBehindAppBar: true,
       appBar: AppBar(),
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),

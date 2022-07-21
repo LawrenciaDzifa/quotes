@@ -1,7 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' show jsonDecode;
-import 'package:quotes/Views/quote_detail.dart';
 import 'package:quotes/post_model.dart';
 import 'package:quotes/category_model.dart';
 
