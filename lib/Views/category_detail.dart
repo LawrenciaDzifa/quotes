@@ -44,18 +44,30 @@ class _CategoryDetailState extends State<CategoryDetail> {
                 }
                 //print(snapshot.data);
                 if (snapshot.data == null) {
-                  return Center(
-                    child: Text(
-                      'No Posts Available Now',
-                      style: TextStyle(fontSize: 20, color: Colors.red),
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Center(
+                      child: Text(
+                        'No posts available now, please check back later',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 25,
+                        ),
+                      ),
                     ),
                   );
                 }
                 if (snapshot.data!.isEmpty) {
-                  return Center(
-                    child: Text(
-                      'No Posts Available Now',
-                      style: TextStyle(fontSize: 20, color: Colors.red),
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Center(
+                      child: Text(
+                        'No posts available now, please check back later',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 25,
+                        ),
+                      ),
                     ),
                   );
                 }
