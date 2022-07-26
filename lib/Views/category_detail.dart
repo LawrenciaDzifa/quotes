@@ -4,7 +4,6 @@ import 'package:quotes/Views/home.dart';
 import 'package:quotes/Views/quote_detail.dart';
 import 'package:quotes/category_model.dart';
 import 'package:quotes/post_by_category.dart';
-import 'package:quotes/post_model.dart';
 
 class CategoryDetail extends StatefulWidget {
   const CategoryDetail({Key? key, required this.category}) : super(key: key);
@@ -42,7 +41,6 @@ class _CategoryDetailState extends State<CategoryDetail> {
                     child: CircularProgressIndicator(),
                   );
                 }
-                //print(snapshot.data);
                 if (snapshot.data == null) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -76,7 +74,6 @@ class _CategoryDetailState extends State<CategoryDetail> {
                     physics: ScrollPhysics(),
                     shrinkWrap: false,
                     itemCount: snapshot.data!.length,
-                    //itemCount: 6,
                     itemBuilder: (BuildContext context, int index) {
                       final wpquotesDetail = snapshot.data![index];
                       var imageurl = wpquotesDetail.xFeaturedMedia;
@@ -90,7 +87,6 @@ class _CategoryDetailState extends State<CategoryDetail> {
                         },
                         child: Container(
                           height: MediaQuery.of(context).size.height / 6,
-                          //color: Colors.grey[200],
                           margin: EdgeInsets.symmetric(
                               vertical: 15, horizontal: 20),
                           decoration: BoxDecoration(
@@ -121,7 +117,6 @@ class _CategoryDetailState extends State<CategoryDetail> {
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 23,
-                                  //fontWeight: FontWeight.w400,
                                 ),
                               ),
                             ),

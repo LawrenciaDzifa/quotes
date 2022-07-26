@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quotes/Modules/quote_category.dart';
 import 'package:quotes/Views/category_detail.dart';
-import 'package:quotes/Views/quote_detail.dart';
 import 'package:quotes/Modules/wp_api.dart';
 import 'package:quotes/category_model.dart';
 
