@@ -44,11 +44,13 @@ class _AllCategoryState extends State<AllCategory> {
                     return GestureDetector(
                       onTap: () {
                         Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => CategoryDetail(
-                                      category: wpcategory,
-                                    )));
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CategoryDetail(
+                              category: wpcategory,
+                            ),
+                          ),
+                        );
                       },
                       child: Stack(children: [
                         Container(

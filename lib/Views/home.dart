@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:quotes/Authenticate_Views/login.dart';
+import 'package:quotes/Authenticate_Views/register.dart';
 import 'package:quotes/Views/category_grid.dart';
 import 'package:quotes/constants.dart';
 
@@ -32,6 +34,12 @@ class Home extends StatelessWidget {
               onTap: () {
                 // Update the state of the app.
                 // ...
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Signup(),
+                  ),
+                );
               },
             ),
             ListTile(
@@ -42,6 +50,12 @@ class Home extends StatelessWidget {
               onTap: () {
                 // Update the state of the app.
                 // ...
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Login(),
+                  ),
+                );
               },
             ),
             ListTile(
