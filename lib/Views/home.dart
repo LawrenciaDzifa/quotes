@@ -19,7 +19,7 @@ class Home extends StatelessWidget {
             const DrawerHeader(
               margin: EdgeInsets.only(bottom: 20),
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: Color(0xfffcadeed),
               ),
               child: CircleAvatar(
                   child: ClipOval(

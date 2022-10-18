@@ -30,31 +30,36 @@ class _QuoteDetailsState extends State<QuoteDetails> {
           children: [
             Container(
               padding: EdgeInsets.symmetric(horizontal: 15.0),
-              height: MediaQuery.of(context).size.height / 2.6,
+              height: MediaQuery.of(context).size.height / 3,
               decoration: BoxDecoration(
-                image: widget.quote.xFeaturedMedia == null
-                    ? DecorationImage(
-                        image:
-                            AssetImage('assets/images/placeholder-image.png'),
-                        fit: BoxFit.cover)
-                    : DecorationImage(
-                        image: NetworkImage(widget.quote.xFeaturedMedia!),
-                        fit: BoxFit.cover,
-                      ),
-                gradient: LinearGradient(
-                  colors: [
-                    Colors.transparent,
-                    Colors.black.withOpacity(0.6),
-                  ],
-                  stops: [0.0, 1],
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft,
-                ),
+                // image: widget.quote.xFeaturedMedia == null
+                //     ? DecorationImage(
+                //         image:
+                //             AssetImage('assets/images/placeholder-image.png'),
+                //         fit: BoxFit.cover)
+                //     : DecorationImage(
+                //         image: NetworkImage(widget.quote.xFeaturedMedia!),
+                //         fit: BoxFit.cover,
+                //       ),
+                // gradient: LinearGradient(
+                //   colors: [
+                //     Colors.transparent,
+                //     Colors.black.withOpacity(0.6),
+                //   ],
+                //   stops: [0.0, 1],
+                //   begin: Alignment.topRight,
+                //   end: Alignment.bottomLeft,
+                // ),
+                color: Color(0xffcadeed),
               ),
               child: Center(
                 child: Text(
                   widget.quote.title!.rendered.toString(),
-                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.w500),
+                  style: TextStyle(
+                    fontSize: 35,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
               ),
             ),

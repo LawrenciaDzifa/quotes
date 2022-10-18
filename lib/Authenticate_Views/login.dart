@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:quotes/Authenticate_Views/register.dart';
+import 'package:quotes/Provider/google_signin.dart';
 import 'package:quotes/constants.dart';
 
 class Login extends StatelessWidget {
@@ -8,11 +11,16 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Image.asset(
-          'assets/images/luv.jpg',
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          fit: BoxFit.cover,
+        // Image.asset(
+        //   'assets/images/luv.jpg',
+        //   height: MediaQuery.of(context).size.height,
+        //   width: MediaQuery.of(context).size.width,
+        //   fit: BoxFit.cover,
+        // ),
+        Container(
+          decoration: BoxDecoration(
+            color: Color(0xffcadeed),
+          ),
         ),
         Scaffold(
           extendBodyBehindAppBar: true,
@@ -27,7 +35,7 @@ class Login extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 30, horizontal: 25),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Color.fromARGB(99, 224, 238, 251),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 height: MediaQuery.of(context).size.height / 2,
@@ -46,7 +54,7 @@ class Login extends StatelessWidget {
                               color: Color.fromARGB(255, 81, 147, 247),
                             ),
                             padding: EdgeInsets.symmetric(
-                                vertical: 18, horizontal: 30),
+                                vertical: 18, horizontal: 20),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10))),
                         child: Row(
@@ -63,15 +71,22 @@ class Login extends StatelessWidget {
                         ),
                       ),
                       OutlinedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          final provider = Provider.of<GoogleSignInProvider>(
+                              context,
+                              listen: false);
+                          provider.googleSignin();
+                        },
                         style: OutlinedButton.styleFrom(
-                            side: BorderSide(
-                              color: Color.fromARGB(255, 225, 7, 7),
-                            ),
-                            padding: EdgeInsets.symmetric(
-                                vertical: 18, horizontal: 30),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10))),
+                          side: BorderSide(
+                            color: Color.fromARGB(255, 225, 7, 7),
+                          ),
+                          padding: EdgeInsets.symmetric(
+                              vertical: 18, horizontal: 20),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
                         child: Row(
                           //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -96,7 +111,16 @@ class Login extends StatelessWidget {
                             ),
                           ),
                           TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return Signup();
+                                    },
+                                  ),
+                                );
+                              },
                               child: Text(
                                 'Singup',
                                 style: TextStyle(

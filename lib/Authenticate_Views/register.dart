@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:quotes/Authenticate_Views/login.dart';
+import 'package:quotes/Provider/google_signin.dart';
 import 'package:quotes/constants.dart';
 
 class Signup extends StatelessWidget {
@@ -8,11 +11,16 @@ class Signup extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Image.asset(
-          'assets/images/fun.jpg',
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          fit: BoxFit.cover,
+        // Image.asset(
+        //   'assets/images/fun.jpg',
+        //   height: MediaQuery.of(context).size.height,
+        //   width: MediaQuery.of(context).size.width,
+        //   fit: BoxFit.cover,
+        // ),
+        Container(
+          decoration: BoxDecoration(
+            color: Color(0xffcadeed),
+          ),
         ),
         Scaffold(
           extendBodyBehindAppBar: true,
@@ -25,9 +33,9 @@ class Signup extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 25.0),
             child: Center(
               child: Container(
-                padding: EdgeInsets.symmetric(vertical: 30, horizontal: 25),
+                padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Color.fromARGB(99, 224, 238, 251),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 height: MediaQuery.of(context).size.height / 2,
@@ -46,7 +54,7 @@ class Signup extends StatelessWidget {
                               color: Color.fromARGB(255, 81, 147, 247),
                             ),
                             padding: EdgeInsets.symmetric(
-                                vertical: 18, horizontal: 40),
+                                vertical: 18, horizontal: 30),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10))),
                         child: Row(
@@ -63,13 +71,18 @@ class Signup extends StatelessWidget {
                         ),
                       ),
                       OutlinedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          final provider = Provider.of<GoogleSignInProvider>(
+                              context,
+                              listen: false);
+                          provider.googleSignin();
+                        },
                         style: OutlinedButton.styleFrom(
                             side: BorderSide(
                               color: Color.fromARGB(255, 225, 7, 7),
                             ),
                             padding: EdgeInsets.symmetric(
-                                vertical: 18, horizontal: 40),
+                                vertical: 18, horizontal: 30),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10))),
                         child: Row(
@@ -96,7 +109,16 @@ class Signup extends StatelessWidget {
                             ),
                           ),
                           TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return Login();
+                                    },
+                                  ),
+                                );
+                              },
                               child: Text(
                                 'Log in',
                                 style: TextStyle(

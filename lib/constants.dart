@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+
+// textStyles
 const kdrawerTextStyle = TextStyle(
   fontSize: 18,
   fontWeight: FontWeight.w400,
@@ -18,9 +20,18 @@ const kauthTitleTextStyle = TextStyle(
   fontSize: 20,
   fontWeight: FontWeight.w600,
 );
+const kwelcomeTextStyle = TextStyle(
+  fontSize: 20,
+  fontWeight: FontWeight.w400,
+);
+
+// sizedBoxes
 const kauthSizedBox_w10 = SizedBox(
   width: 10,
 );
 const kauthSizedBox_w5 = SizedBox(
   width: 10,
+);
+const kwelcomeSizedBox_w20 = SizedBox(
+  width: 20,
 );

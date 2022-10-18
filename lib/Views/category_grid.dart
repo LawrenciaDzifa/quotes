@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quotes/Views/category_detail.dart';
-import 'package:quotes/Modules/wp_api.dart';
+import 'package:quotes/Models/wp_api.dart';
 import 'package:quotes/category_model.dart';
 
 class AllCategory extends StatefulWidget {
@@ -72,8 +72,8 @@ class _AllCategoryState extends State<AllCategory> {
                             margin: EdgeInsets.only(top: 90),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.only(
-                                  bottomRight: Radius.circular(15),
-                                  bottomLeft: Radius.circular(15)),
+                                  bottomRight: Radius.circular(10),
+                                  bottomLeft: Radius.circular(10)),
                               gradient: LinearGradient(colors: [
                                 Colors.transparent,
                                 Colors.black.withOpacity(0.7),

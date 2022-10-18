@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quotes/Modules/wp_api.dart';
+import 'package:quotes/Models/wp_api.dart';
 import 'package:quotes/Views/home.dart';
 import 'package:quotes/Views/quote_detail.dart';
 import 'package:quotes/category_model.dart';
@@ -90,13 +90,13 @@ class _CategoryDetailState extends State<CategoryDetail> {
                           margin: EdgeInsets.symmetric(
                               vertical: 15, horizontal: 20),
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
+                            borderRadius: BorderRadius.circular(10),
                             image: imageurl != null
                                 ? DecorationImage(
                                     image: NetworkImage(imageurl),
                                     fit: BoxFit.cover,
                                     colorFilter: ColorFilter.mode(
-                                        Colors.black.withOpacity(0.7),
+                                        Colors.black.withOpacity(0.5),
                                         BlendMode.darken),
                                   )
                                 : DecorationImage(
