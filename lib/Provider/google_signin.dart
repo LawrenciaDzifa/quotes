@@ -1,7 +1,9 @@
 
+
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:quotes/Views/home.dart';
 
 class GoogleSignInProvider extends ChangeNotifier {
   final googleSignIn = GoogleSignIn();
@@ -25,4 +27,26 @@ class GoogleSignInProvider extends ChangeNotifier {
 
     notifyListeners();
   }
+
+    
+
+  // Future logout() async {
+  //   await googleSignIn.disconnect();
+  //   FirebaseAuth.instance.signOut();
+
+  //   notifyListeners();
+  // }
+//   void handleLogin() async {
+//    GoogleSignInProvider user = await googleSignin();
+//    // Here signInWithGoogle() is your defined function!
+//    if(user != null){
+//       Navigator.push(
+//                           context,
+//                           MaterialPageRoute(
+//                             builder: (context) => Home(),),);
+//    }
+//    else{
+//       // Something Wrong!
+//    }
+// }
 }

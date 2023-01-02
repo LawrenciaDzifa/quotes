@@ -55,6 +55,7 @@ class _CategoryDetailState extends State<CategoryDetail> {
                     ),
                   );
                 }
+            
                 if (snapshot.data!.isEmpty) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),

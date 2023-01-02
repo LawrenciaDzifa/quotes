@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:quotes/Authenticate_Views/login.dart';
+import 'package:quotes/Authenticate_Views/register.dart';
 import 'package:quotes/constants.dart';
 
 class Welcome extends StatefulWidget {
@@ -32,8 +34,14 @@ class _WelcomeState extends State<Welcome> {
         ),
       ),
       bottomSheet: BottomSheetWidget(
-        onClickedLogin: () {},
-        onCLickedSignup: () {},
+        onClickedLogin: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => Login()));
+        },
+        onCLickedSignup: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => Signup()));
+        },
       ),
     );
   }
@@ -55,7 +63,7 @@ class BottomSheetWidget extends StatelessWidget {
         padding: EdgeInsets.all(40.0),
         height: MediaQuery.of(context).size.height / 3.5,
         decoration: BoxDecoration(
-          color: Color(0xffdedede),
+          color: Color(0xffdeded5),
           borderRadius: new BorderRadius.only(
             topLeft: const Radius.circular(25.0),
             topRight: const Radius.circular(25.0),

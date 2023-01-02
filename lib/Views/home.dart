@@ -22,9 +22,12 @@ class Home extends StatelessWidget {
                 color: Color(0xfffcadeed),
               ),
               child: CircleAvatar(
-                  child: ClipOval(
-                      child:
-                          Image(image: AssetImage('assets/images/dzifa.jpg')))),
+                child: ClipOval(
+                  child: Image(
+                    image: AssetImage('assets/images/dzifa.jpg'),
+                  ),
+                ),
+              ),
             ),
             ListTile(
               title: Text(
