@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:quotes/Authenticate_Views/login.dart';
+import 'package:quotes/Authenticate_Views/register.dart';
+import 'package:quotes/Provider/app_state.dart';
 import 'package:quotes/Provider/google_signin.dart';
 import 'package:quotes/Views/home.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -20,18 +23,38 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: ((context) => GoogleSignInProvider()),
+      create: ((context) => AppState()),
+      
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: buildMaterialColor(Color(0xfffcadeed)),
         ),
-        home: Home(),
+        home: HomePage(),
       ),
     );
   }
 }
+class HomePage extends StatelessWidget {
+  
+  @override
+  
+  Widget build(BuildContext context) {
+    
+    final authProvider = Provider.of<GoogleSignInProvider>(context);
+    final user = authProvider.user;
+
+    if (user == null) {
+      // The user is not signed in
+      return Login();
+    } else {
+      // The user is signed in
+      return Home();
+    }
+  }
+}
+
 
 MaterialColor buildMaterialColor(Color color) {
   List strengths = <double>[.05];

@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:provider/provider.dart';
 import 'package:quotes/Authenticate_Views/login.dart';
 import 'package:quotes/Authenticate_Views/register.dart';
 import 'package:quotes/Views/category_grid.dart';
 import 'package:quotes/constants.dart';
 
+import 'package:quotes/Models/user.dart';
+
 class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+  
+
+  Home({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    //  final user = Provider.of<User>(context);
+    // final  photoUrl = user.photoUrl;
+    final googleSignIn = GoogleSignIn();
+    final photoUrl = googleSignIn.currentUser?.photoUrl;
     return Scaffold(
       //extendBodyBehindAppBar: true,
       drawer: Drawer(
@@ -16,17 +26,14 @@ class Home extends StatelessWidget {
           // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
+             DrawerHeader(
               margin: EdgeInsets.only(bottom: 20),
               decoration: BoxDecoration(
                 color: Color(0xfffcadeed),
               ),
               child: CircleAvatar(
-                child: ClipOval(
-                  child: Image(
-                    image: AssetImage('assets/images/dzifa.jpg'),
-                  ),
-                ),
+               backgroundImage: (photoUrl == null) ? null : NetworkImage(photoUrl),
+                radius: 50,
               ),
             ),
             ListTile(

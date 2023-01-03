@@ -6,9 +6,11 @@ import 'package:quotes/constants.dart';
 
 class Signup extends StatelessWidget {
   const Signup({Key? key}) : super(key: key);
+  
 
   @override
   Widget build(BuildContext context) {
+    
     return Stack(
       children: [
         // Image.asset(
@@ -148,3 +150,4 @@ class Signup extends StatelessWidget {
         ;
   }
 }
+

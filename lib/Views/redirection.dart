@@ -7,7 +7,7 @@ class RedirectionPage extends StatefulWidget {
 }
 
 class _RedirectionPageState extends State<RedirectionPage> {
-  GoogleSignInAccount _currentUser;
+  late GoogleSignInAccount _currentUser;
 
   @override
   void initState() {
@@ -16,7 +16,7 @@ class _RedirectionPageState extends State<RedirectionPage> {
   }
 
   void _initCurrentUser() async {
-    _currentUser = await GoogleSignIn().currentUser;
+    _currentUser = (await GoogleSignIn().currentUser)!;
     setState(() {});
   }
 
@@ -35,7 +35,7 @@ class _RedirectionPageState extends State<RedirectionPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text('You have successfully logged in as:'),
-            Text(_currentUser.displayName),
+            Text(_currentUser.displayName ?? ''),
           ],
         ),
       ),
