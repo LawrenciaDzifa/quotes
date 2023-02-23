@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:provider/provider.dart';
 import 'package:quotes/Authenticate_Views/login.dart';
 import 'package:quotes/Authenticate_Views/register.dart';
-import 'package:quotes/Provider/app_state.dart';
 import 'package:quotes/Provider/google_signin.dart';
 import 'package:quotes/Views/home.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -17,41 +17,50 @@ void main() async {
 
   runApp(MyApp());
 }
+GoogleSignIn _googleSignIn = GoogleSignIn(
+  scopes: [
+    'email',
+    'https://www.googleapis.com/auth/contacts.readonly',
+  ],
+);
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
 
-class MyApp extends StatelessWidget {
+class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
+  GoogleSignInAccount? _currentUser;
+  @override
+  void initState() {
+    _googleSignIn.onCurrentUserChanged.listen((account) {
+      setState(() {
+        _currentUser = account;
+      });
+    }); 
+    _googleSignIn.signInSilently();
+    super.initState();
+  }
+  
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: ((context) => AppState()),
-      
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: buildMaterialColor(Color(0xfffcadeed)),
-        ),
-        home: HomePage(),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: buildMaterialColor(Color(0xfffcadeed)),
       ),
+      home: _buildWidget(),
     );
   }
 }
-class HomePage extends StatelessWidget {
-  
-  @override
-  
-  Widget build(BuildContext context) {
-    
-    final authProvider = Provider.of<GoogleSignInProvider>(context);
-    final user = authProvider.user;
 
-    if (user == null) {
-      // The user is not signed in
-      return Login();
-    } else {
-      // The user is signed in
-      return Home();
-    }
+Widget _buildWidget() {
+  GoogleSignInAccount? user = _googleSignIn.currentUser;
+  if (user != null) {
+    return Home();
+  } else {
+    return Welcome();
   }
 }
 

@@ -8,10 +8,19 @@ import 'package:quotes/constants.dart';
 
 import 'package:quotes/Models/user.dart';
 
-class Home extends StatelessWidget {
-  
+class Home extends StatefulWidget {
+  @override
+  State<Home> createState() => _HomeState();
+}
 
-  Home({Key? key}) : super(key: key);
+class _HomeState extends State<Home> {
+  final googleSignIn = GoogleSignIn();
+  late String photoUrl;
+  @override
+  void initState() {
+    photoUrl = googleSignIn.currentUser?.photoUrl ?? '';
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,13 +35,14 @@ class Home extends StatelessWidget {
           // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: [
-             DrawerHeader(
+            DrawerHeader(
               margin: EdgeInsets.only(bottom: 20),
               decoration: BoxDecoration(
                 color: Color(0xfffcadeed),
               ),
               child: CircleAvatar(
-               backgroundImage: (photoUrl == null) ? null : NetworkImage(photoUrl),
+                backgroundImage:
+                    (photoUrl == null) ? null : NetworkImage(photoUrl),
                 radius: 50,
               ),
             ),
@@ -86,6 +96,14 @@ class Home extends StatelessWidget {
               onTap: () {
                 // Update the state of the app.
                 // ...
+                googleSignIn.signOut();
+                print('User Signed Out');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Login(),
+                  ),
+                );
               },
             ),
           ],

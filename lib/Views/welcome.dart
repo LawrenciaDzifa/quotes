@@ -51,8 +51,7 @@ class BottomSheetWidget extends StatelessWidget {
   final onClickedLogin;
   final onCLickedSignup;
 
-  const BottomSheetWidget({Key? key, this.onClickedLogin, this.onCLickedSignup})
-      : super(key: key);
+  const BottomSheetWidget({this.onClickedLogin, this.onCLickedSignup});
 
   @override
   Widget build(BuildContext context) {
@@ -98,7 +97,7 @@ class BottomSheetWidget extends StatelessWidget {
                   onPressed: onClickedLogin,
                   style: OutlinedButton.styleFrom(
                     side: BorderSide(
-                      color: Color(0xffcadded),
+                      color: Color.fromARGB(255, 237, 215, 202),
                     ),
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                     shape: RoundedRectangleBorder(
@@ -110,7 +109,7 @@ class BottomSheetWidget extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w400,
-                      color: Color(0xffcadeed),
+                      color: Color.fromARGB(255, 237, 215, 202),
                     ),
                   ),
                 ),

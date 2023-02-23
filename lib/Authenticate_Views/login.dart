@@ -72,10 +72,6 @@ class Login extends StatelessWidget {
                       ),
                       OutlinedButton(
                         onPressed: () {
-                          final provider = Provider.of<GoogleSignInProvider>(
-                              context,
-                              listen: false);
-                          provider.googleSignin();
                         },
                         style: OutlinedButton.styleFrom(
                           side: BorderSide(

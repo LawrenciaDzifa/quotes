@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quotes/Authenticate_Views/login.dart';
+import 'package:quotes/Models/user.dart';
 import 'package:quotes/Provider/google_signin.dart';
+import 'package:quotes/Views/home.dart';
 import 'package:quotes/constants.dart';
 
-class Signup extends StatelessWidget {
-  const Signup({Key? key}) : super(key: key);
-  
+class Signup extends StatefulWidget {
+  @override
+  State<Signup> createState() => _SignupState();
+}
 
+class _SignupState extends State<Signup> {
   @override
   Widget build(BuildContext context) {
-    
     return Stack(
       children: [
         // Image.asset(
@@ -73,11 +76,17 @@ class Signup extends StatelessWidget {
                         ),
                       ),
                       OutlinedButton(
-                        onPressed: () {
-                          final provider = Provider.of<GoogleSignInProvider>(
-                              context,
-                              listen: false);
-                          provider.googleSignin();
+                        onPressed: () async {
+                          GoogleSignInProvider()
+                              .registerWithGoogle()
+                              .then((value) {
+                            if (value != null) {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Home()));
+                            }
+                          });
                         },
                         style: OutlinedButton.styleFrom(
                             side: BorderSide(
@@ -150,4 +159,3 @@ class Signup extends StatelessWidget {
         ;
   }
 }
-
