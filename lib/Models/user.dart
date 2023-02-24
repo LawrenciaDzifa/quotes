@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class User {
-  final String name;
-  final String email;
-  final String photoUrl;
+  final  name;
+  final  email;
+  final  photoUrl;
 
-  User({required this.name, required this.email, required this.photoUrl });
+  User({ this.name,  this.email,  this.photoUrl });
 }
 
 class AuthProvider with ChangeNotifier {

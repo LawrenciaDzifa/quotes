@@ -1,33 +1,45 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:provider/provider.dart';
 import 'package:quotes/Authenticate_Views/login.dart';
 import 'package:quotes/Authenticate_Views/register.dart';
+import 'package:quotes/Provider/google_signin.dart';
 import 'package:quotes/Views/category_grid.dart';
+import 'package:quotes/Views/welcome.dart';
 import 'package:quotes/constants.dart';
-
 import 'package:quotes/Models/user.dart';
 
 class Home extends StatefulWidget {
+  //  AuthCredential credential;
+  // Home({required this.credential});
+
+
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  final googleSignIn = GoogleSignIn();
-  late String photoUrl;
+ 
   @override
   void initState() {
-    photoUrl = googleSignIn.currentUser?.photoUrl ?? '';
+    
     super.initState();
+        initUser();
+
+  }
+  initUser(){
+    final user = FirebaseAuth.instance.currentUser;
+    setState(() {
+      
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    //  final user = Provider.of<User>(context);
-    // final  photoUrl = user.photoUrl;
-    final googleSignIn = GoogleSignIn();
-    final photoUrl = googleSignIn.currentUser?.photoUrl;
+    // Access user credentials using widget.credential
+    final user = FirebaseAuth.instance.currentUser;
+
     return Scaffold(
       //extendBodyBehindAppBar: true,
       drawer: Drawer(
@@ -40,10 +52,21 @@ class _HomeState extends State<Home> {
               decoration: BoxDecoration(
                 color: Color(0xfffcadeed),
               ),
-              child: CircleAvatar(
-                backgroundImage:
-                    (photoUrl == null) ? null : NetworkImage(photoUrl),
-                radius: 50,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  CircleAvatar(
+                     backgroundImage: NetworkImage(user?.photoURL ?? ''),
+                    radius: 40,
+                  ),
+                  Text(
+                    user?.displayName ?? '',
+                    style: kdrawerTextStyle,
+                  ),
+                  Text(
+                    user?.email ?? '',
+                    style: kdrawerTextStyle,)
+                ],
               ),
             ),
             ListTile(
@@ -52,8 +75,7 @@ class _HomeState extends State<Home> {
                 style: kdrawerTextStyle,
               ),
               onTap: () {
-                // Update the state of the app.
-                // ...
+                
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -68,8 +90,7 @@ class _HomeState extends State<Home> {
                 style: kdrawerTextStyle,
               ),
               onTap: () {
-                // Update the state of the app.
-                // ...
+             
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -84,8 +105,7 @@ class _HomeState extends State<Home> {
                 style: kdrawerTextStyle,
               ),
               onTap: () {
-                // Update the state of the app.
-                // ...
+               
               },
             ),
             ListTile(
@@ -94,16 +114,10 @@ class _HomeState extends State<Home> {
                 style: kdrawerTextStyle,
               ),
               onTap: () {
-                // Update the state of the app.
-                // ...
-                googleSignIn.signOut();
+                
+                GoogleSignInProvider().signOut(context);
                 print('User Signed Out');
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Login(),
-                  ),
-                );
+              
               },
             ),
           ],

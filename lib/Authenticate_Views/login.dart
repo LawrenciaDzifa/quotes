@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quotes/Authenticate_Views/register.dart';
 import 'package:quotes/Provider/google_signin.dart';
+import 'package:quotes/Views/home.dart';
 import 'package:quotes/constants.dart';
 
 class Login extends StatelessWidget {
@@ -71,7 +72,16 @@ class Login extends StatelessWidget {
                         ),
                       ),
                       OutlinedButton(
-                        onPressed: () {
+                        onPressed: () async{
+                          await GoogleSignInProvider().signInWithGoogle(context);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return Home( );
+                              },
+                            ),
+                          );
                         },
                         style: OutlinedButton.styleFrom(
                           side: BorderSide(

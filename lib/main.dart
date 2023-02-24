@@ -20,7 +20,7 @@ void main() async {
 GoogleSignIn _googleSignIn = GoogleSignIn(
   scopes: [
     'email',
-    'https://www.googleapis.com/auth/contacts.readonly',
+    // 'https://www.googleapis.com/auth/contacts.readonly',
   ],
 );
 class MyApp extends StatefulWidget {
@@ -29,7 +29,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  // This widget is the root of your application.
   GoogleSignInAccount? _currentUser;
   @override
   void initState() {
@@ -58,11 +57,24 @@ class _MyAppState extends State<MyApp> {
 Widget _buildWidget() {
   GoogleSignInAccount? user = _googleSignIn.currentUser;
   if (user != null) {
-    return Home();
+    return ChangeNotifierProvider(
+      create: (_) => GoogleSignInProvider(),
+      child: Home(
+      ),
+    );
   } else {
     return Welcome();
   }
 }
+
+// Widget _buildWidget() {
+//   GoogleSignInAccount? user = _googleSignIn.currentUser;
+//   if (user != null) {
+//     return Home(credential: ,);
+//   } else {
+//     return Welcome();
+//   }
+// }
 
 
 MaterialColor buildMaterialColor(Color color) {
