@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 // textStyles
 const kdrawerTextStyle = TextStyle(
   fontSize: 18,
@@ -35,3 +34,4 @@ const kauthSizedBox_w5 = SizedBox(
 const kwelcomeSizedBox_w20 = SizedBox(
   width: 20,
 );
+const kIconTheme = IconThemeData(color: Color(0xffcadeed));

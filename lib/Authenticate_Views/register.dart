@@ -16,14 +16,15 @@ class _SignupState extends State<Signup> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        // Image.asset(
-        //   'assets/images/fun.jpg',
-        //   height: MediaQuery.of(context).size.height,
-        //   width: MediaQuery.of(context).size.width,
-        //   fit: BoxFit.cover,
-        // ),
+      
         Container(
           decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/signup.jpeg'),
+              fit: BoxFit.cover,
+              colorFilter: ColorFilter.mode(
+                  Colors.black.withOpacity(0.7), BlendMode.darken),
+            ),
             color: Color(0xffcadeed),
           ),
         ),
@@ -31,6 +32,7 @@ class _SignupState extends State<Signup> {
           extendBodyBehindAppBar: true,
           backgroundColor: Colors.transparent,
           appBar: AppBar(
+            iconTheme: kIconTheme,
             backgroundColor: Colors.transparent,
             elevation: 0,
           ),
@@ -40,7 +42,7 @@ class _SignupState extends State<Signup> {
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(99, 224, 238, 251),
+                  color: Color.fromARGB(200, 224, 238, 251),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 height: MediaQuery.of(context).size.height / 2,
