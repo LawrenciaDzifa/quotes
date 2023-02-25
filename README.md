@@ -7,13 +7,13 @@ With a clean and intuitive interface, users can easily browse through hundreds o
 
 <div align="center">
     <img src="/ss/ss0.png" width="300px" height="600px" />
-    <img src="/ss/ss8.png" width="300px" height="600px" />
-    <img src="/ss/ss7.png" width="300px" height="600px" />
-    <img src="/ss/ss.png" width="300px" height="600px" />
+    <img src="/ss/ss1.png" width="300px" height="600px" />
     <img src="/ss/ss2.png" width="300px" height="600px" />
     <img src="/ss/ss3.png" width="300px" height="600px" />
     <img src="/ss/ss4.png" width="300px" height="600px" />
     <img src="/ss/ss5.png" width="300px" height="600px" />
+    <img src="/ss/ss6.png" width="300px" height="600px" />
+    <img src="/ss/ss7.png" width="300px" height="600px" />
 
 </div>
 
