@@ -48,6 +48,7 @@ class _MyAppState extends State<MyApp> {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: buildMaterialColor(Color(0xfffcadeed)),
+        primaryColor: Color(0xfffcadeed),
       ),
       home: _buildWidget(),
     );
@@ -67,14 +68,6 @@ Widget _buildWidget() {
   }
 }
 
-// Widget _buildWidget() {
-//   GoogleSignInAccount? user = _googleSignIn.currentUser;
-//   if (user != null) {
-//     return Home(credential: ,);
-//   } else {
-//     return Welcome();
-//   }
-// }
 
 
 MaterialColor buildMaterialColor(Color color) {

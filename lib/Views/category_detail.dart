@@ -27,7 +27,7 @@ class _CategoryDetailState extends State<CategoryDetail> {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => Home()));
           },
-          color: Colors.white,
+          
         ),
       ),
       body: Column(
