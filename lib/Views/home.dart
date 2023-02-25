@@ -7,6 +7,7 @@ import 'package:quotes/Authenticate_Views/register.dart';
 import 'package:quotes/Provider/google_signin.dart';
 import 'package:quotes/Views/category_grid.dart';
 import 'package:quotes/Views/welcome.dart';
+import 'package:quotes/Widgets/drawer_list_tile.dart';
 import 'package:quotes/constants.dart';
 import 'package:quotes/Models/user.dart';
 
@@ -65,12 +66,8 @@ class _HomeState extends State<Home> {
                 ],
               ),
             ),
-            ListTile(
-              title: Text(
-                'Settings',
-                style: kdrawerTextStyle,
-              ),
-              onTap: () {
+            DrawerListTile(
+              press: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -78,13 +75,10 @@ class _HomeState extends State<Home> {
                   ),
                 );
               },
+              text: 'Login',
             ),
-            ListTile(
-              title: Text(
-                'Saved',
-                style: kdrawerTextStyle,
-              ),
-              onTap: () {
+            DrawerListTile(
+              press: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -92,23 +86,15 @@ class _HomeState extends State<Home> {
                   ),
                 );
               },
+              text: 'Saved Quotes',
             ),
-            ListTile(
-              title: Text(
-                'Bookmarks',
-                style: kdrawerTextStyle,
-              ),
-              onTap: () {},
-            ),
-            ListTile(
-              title: Text(
-                'Sign out',
-                style: kdrawerTextStyle,
-              ),
-              onTap: () {
+            DrawerListTile(text: 'Bookmarks', press: () {}),
+            DrawerListTile(
+              text: 'Sign Out',
+              press: () {
                 GoogleSignInProvider().signOut(context);
               },
-            ),
+            )
           ],
         ),
       ),

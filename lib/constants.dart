@@ -34,4 +34,9 @@ const kauthSizedBox_w5 = SizedBox(
 const kwelcomeSizedBox_w20 = SizedBox(
   width: 20,
 );
+const kwelcomeSizedBox_h30 = SizedBox(
+  height: 30,
+);
+
+// colors
 const kIconTheme = IconThemeData(color: Color(0xffcadeed));
