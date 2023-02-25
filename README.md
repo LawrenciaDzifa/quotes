@@ -7,6 +7,8 @@ With a clean and intuitive interface, users can easily browse through hundreds o
 
 <div align="center">
     <img src="/ss/ss0.png" width="350px" height="700" />
+    <img src="/ss/ss8.png" width="350px" height="700" />
+    <img src="/ss/ss7.png" width="350px" height="700" />
     <img src="/ss/ss.png" width="350px" height="700" />
     <img src="/ss/ss2.png" width="350px" height="700" />
     <img src="/ss/ss3.png" width="350px" height="700" />
