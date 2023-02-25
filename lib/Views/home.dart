@@ -14,25 +14,20 @@ class Home extends StatefulWidget {
   //  AuthCredential credential;
   // Home({required this.credential});
 
-
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
- 
   @override
   void initState() {
-    
     super.initState();
-        initUser();
-
+    initUser();
   }
-  initUser(){
+
+  initUser() {
     final user = FirebaseAuth.instance.currentUser;
-    setState(() {
-      
-    });
+    setState(() {});
   }
 
   @override
@@ -56,7 +51,7 @@ class _HomeState extends State<Home> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   CircleAvatar(
-                     backgroundImage: NetworkImage(user?.photoURL ?? ''),
+                    backgroundImage: NetworkImage(user?.photoURL ?? ''),
                     radius: 40,
                   ),
                   Text(
@@ -65,7 +60,8 @@ class _HomeState extends State<Home> {
                   ),
                   Text(
                     user?.email ?? '',
-                    style: kdrawerTextStyle,)
+                    style: kdrawerTextStyle,
+                  )
                 ],
               ),
             ),
@@ -75,7 +71,6 @@ class _HomeState extends State<Home> {
                 style: kdrawerTextStyle,
               ),
               onTap: () {
-                
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -90,7 +85,6 @@ class _HomeState extends State<Home> {
                 style: kdrawerTextStyle,
               ),
               onTap: () {
-             
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -104,9 +98,7 @@ class _HomeState extends State<Home> {
                 'Bookmarks',
                 style: kdrawerTextStyle,
               ),
-              onTap: () {
-               
-              },
+              onTap: () {},
             ),
             ListTile(
               title: Text(
@@ -114,10 +106,8 @@ class _HomeState extends State<Home> {
                 style: kdrawerTextStyle,
               ),
               onTap: () {
-                
                 GoogleSignInProvider().signOut(context);
                 print('User Signed Out');
-              
               },
             ),
           ],

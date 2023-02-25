@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quotes/post_by_category.dart';
 import 'package:html/parser.dart';
-
+import 'package:share_plus/share_plus.dart';
 class QuoteDetails extends StatefulWidget {
   const QuoteDetails({Key? key, required this.quote}) : super(key: key);
   final PostByCategory quote;
@@ -89,7 +89,12 @@ class _QuoteDetailsState extends State<QuoteDetails> {
                     iconSize: 35,
                   ),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: ()  {
+                      // share the quote
+                      Share.share(
+                          '${widget.quote.title!.rendered.toString()} \n\n ${parse(widget.quote.content!.rendered!).documentElement!.text}');
+                          
+                    },
                     icon: Icon(Icons.share),
                     iconSize: 35,
                   ),
