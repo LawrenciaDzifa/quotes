@@ -66,8 +66,7 @@ class GoogleSignInProvider extends ChangeNotifier{
     // Sign in with the Firebase credential
     UserCredential userCredential =
         await FirebaseAuth.instance.signInWithCredential(credential);
-    print(userCredential.user?.displayName);
-    // pass userCredentials to Home
+    // If the user is not null then navigate to the home page
     if (userCredential.user != null) {
       Navigator.of(context).push(
         MaterialPageRoute(

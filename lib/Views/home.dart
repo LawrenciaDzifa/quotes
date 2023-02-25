@@ -107,7 +107,6 @@ class _HomeState extends State<Home> {
               ),
               onTap: () {
                 GoogleSignInProvider().signOut(context);
-                print('User Signed Out');
               },
             ),
           ],
