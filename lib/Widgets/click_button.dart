@@ -13,6 +13,8 @@ class ClickButton extends StatelessWidget {
       onPressed: press,
       style: OutlinedButton.styleFrom(
         side: BorderSide(
+          width: text=='Login'?2:0,
+          // strokeAlign: ,
           color: Color(0xffcadeed),
         ),
         backgroundColor: text=='Login'?Color.fromARGB(0, 202, 222, 237):Color(0xfff5d5c5),

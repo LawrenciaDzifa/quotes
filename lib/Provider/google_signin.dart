@@ -1,11 +1,12 @@
-
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:quotes/Authenticate_Views/login.dart';
 import 'package:quotes/Views/home.dart';
 import 'package:quotes/Views/welcome.dart';
+import 'package:quotes/Widgets/click_button.dart';
 
-class GoogleSignInProvider extends ChangeNotifier{
+class GoogleSignInProvider extends ChangeNotifier {
   final GoogleSignIn _googleSignIn = GoogleSignIn(
     scopes: [
       'email',
@@ -13,7 +14,7 @@ class GoogleSignInProvider extends ChangeNotifier{
     ],
   );
 
-  Future registerWithGoogle() async {
+  Future registerWithGoogle(BuildContext context) async {
     // Sign in with Google
     final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
     if (googleUser == null) {
@@ -38,19 +39,36 @@ class GoogleSignInProvider extends ChangeNotifier{
     final User? user = userCredential.user;
     if (user != null && !user.emailVerified) {
       await user.sendEmailVerification();
-      // Navigator.of(context).push(
-      //   MaterialPageRoute(
-      //     builder: (context) {
-      //       return Welcome();
-      //     },
-      //   ),
-      // );
+      // Show a welcome pop up
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text("Welcome!"),
+            content: Text("Please check your email to verify your account."),
+            actions: <Widget>[
+              ClickButton(
+                text: "OK",
+                press: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+      // navigate to login page
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) {
+            return Login();
+          },
+        ),
+      );
     }
-
-    return user;
   }
 
- Future signInWithGoogle(BuildContext context) async {
+  Future signInWithGoogle(BuildContext context) async {
     // Sign in with Google
     GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
 
@@ -68,6 +86,25 @@ class GoogleSignInProvider extends ChangeNotifier{
         await FirebaseAuth.instance.signInWithCredential(credential);
     // If the user is not null then navigate to the home page
     if (userCredential.user != null) {
+      // show a welcome modal
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            elevation: 50,
+            title: Text("Welcome!"),
+            content: Text("You have successfully logged in."),
+            actions: <Widget>[
+              ClickButton(
+                text: "OK",
+                press: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (context) {

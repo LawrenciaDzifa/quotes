@@ -80,7 +80,7 @@ class _SignupState extends State<Signup> {
                       OutlinedButton(
                         onPressed: () async {
                           GoogleSignInProvider()
-                              .registerWithGoogle()
+                              .registerWithGoogle(context)
                               .then((value) {
                             if (value != null) {
                               Navigator.pushReplacement(
