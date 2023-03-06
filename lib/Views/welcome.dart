@@ -21,7 +21,7 @@ class _WelcomeState extends State<Welcome> {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      backgroundColor: Color(0xffcadeed),
+      // backgroundColor: Color(0xffcadeed),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -52,11 +52,11 @@ class _WelcomeState extends State<Welcome> {
                     TyperAnimatedText(
                       'Get Motivated!',
                       textStyle: TextStyle(
-                        fontSize: 35,
+                        fontSize: 50,
                         fontWeight: FontWeight.w500,
                         color: Color(0xffcadeed),
                       ),
-                      speed: Duration(milliseconds:150),
+                      speed: Duration(milliseconds: 150),
                     ),
                   ],
                   totalRepeatCount: 20,

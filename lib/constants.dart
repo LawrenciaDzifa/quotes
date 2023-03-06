@@ -40,3 +40,14 @@ const kwelcomeSizedBox_h30 = SizedBox(
 
 // colors
 const kIconTheme = IconThemeData(color: Color(0xffcadeed));
+
+// buttons
+// const kauthButtonStyle = OutlinedButton.styleFrom(
+//   side: BorderSide(
+//     color: Color.fromARGB(255, 81, 147, 247),
+//   ),
+//   padding: EdgeInsets.symmetric(vertical: 18, horizontal: 20),
+//   shape: RoundedRectangleBorder(
+//     borderRadius: BorderRadius.circular(10),
+//   ),
+// );

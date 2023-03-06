@@ -2,18 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:quotes/post_by_category.dart';
 import 'package:html/parser.dart';
 import 'package:share_plus/share_plus.dart';
+
 class QuoteDetails extends StatefulWidget {
-  const QuoteDetails({Key? key, required this.quote}) : super(key: key);
+  const QuoteDetails({ required this.quote});
   final PostByCategory quote;
   @override
   _QuoteDetailsState createState() => _QuoteDetailsState();
 }
 
 class _QuoteDetailsState extends State<QuoteDetails> {
-  @override
-  void initState() {
-    super.initState();
-  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +21,7 @@ class _QuoteDetailsState extends State<QuoteDetails> {
           backgroundColor: Colors.transparent,
           elevation: 0,
           leading: BackButton(
-            color: Colors.black,
+            color: Color(0xffcadeed),
           ),
         ),
         body: Column(
@@ -32,24 +30,18 @@ class _QuoteDetailsState extends State<QuoteDetails> {
               padding: EdgeInsets.symmetric(horizontal: 15.0),
               height: MediaQuery.of(context).size.height / 3,
               decoration: BoxDecoration(
-                // image: widget.quote.xFeaturedMedia == null
-                //     ? DecorationImage(
-                //         image:
-                //             AssetImage('assets/images/placeholder-image.png'),
-                //         fit: BoxFit.cover)
-                //     : DecorationImage(
-                //         image: NetworkImage(widget.quote.xFeaturedMedia!),
-                //         fit: BoxFit.cover,
-                //       ),
-                // gradient: LinearGradient(
-                //   colors: [
-                //     Colors.transparent,
-                //     Colors.black.withOpacity(0.6),
-                //   ],
-                //   stops: [0.0, 1],
-                //   begin: Alignment.topRight,
-                //   end: Alignment.bottomLeft,
-                // ),
+                image: widget.quote.xFeaturedMedia == null
+                    ? DecorationImage(
+                        image:
+                            AssetImage('assets/images/placeholder-image.png'),
+                        fit: BoxFit.cover,
+                      )
+                    : DecorationImage(
+                        image: NetworkImage(widget.quote.xFeaturedMedia!),
+                        fit: BoxFit.cover,
+                        colorFilter: ColorFilter.mode(
+                            Colors.black.withOpacity(0.7), BlendMode.darken),
+                      ),
                 color: Color(0xffcadeed),
               ),
               child: Center(
@@ -58,6 +50,7 @@ class _QuoteDetailsState extends State<QuoteDetails> {
                   style: TextStyle(
                     fontSize: 35,
                     fontWeight: FontWeight.w500,
+                    color: Color(0xffcadeed),
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -84,16 +77,18 @@ class _QuoteDetailsState extends State<QuoteDetails> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      // add to favorite
+                      // likeQuote(quoteId, userId);
+                    },
                     icon: Icon(Icons.favorite_border),
                     iconSize: 35,
                   ),
                   IconButton(
-                    onPressed: ()  {
+                    onPressed: () {
                       // share the quote
                       Share.share(
                           '${widget.quote.title!.rendered.toString()} \n\n ${parse(widget.quote.content!.rendered!).documentElement!.text}');
-                          
                     },
                     icon: Icon(Icons.share),
                     iconSize: 35,
