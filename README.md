@@ -7,7 +7,7 @@
 
 <p>Get Motivated is a mobile app designed to help users find daily inspiration and motivation to achieve their goals. With a simple, easy-to-use interface, users can browse through a curated collection of quotes and motivational messages, save their favorites, and share them with friends and family.</p>
 
-<p>The app is built using Flutter, a popular cross-platform framework for mobile app development. It is available for both iOS and Android devices.</p>
+<p>The app is built using Flutter, a popular cross-platform framework for mobile app development. It will soon be available for both iOS and Android devices.</p>
 
 <h2>Features</h2>
 
@@ -21,7 +21,7 @@
 
 <h2>Getting Started</h2>
 
-<p>To get started with the Get Motivated app, simply download it from the App Store or Google Play. Once you've installed the app on your device, you can begin browsing through the collection of motivational quotes and messages.</p>
+<p>The Get Motivated app is yet to be published on the App Store and Google Play. Once it is available for download, you can install the app on your device and begin browsing through the collection of motivational quotes and messages.</p>
 
 <p>To save a quote as a favorite, simply tap the "heart" icon next to the quote. You can then access your favorite quotes from the "Favorites" tab in the app.</p>
 
