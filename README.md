@@ -48,7 +48,6 @@
     <img src="/ss/ss5.png" width="300px" height="600px" />
     <img src="/ss/ss6.png" width="300px" height="600px" />
     <img src="/ss/ss7.png" width="300px" height="600px" />
-    <img  width="300px" height="600px" />
 
 
 </div>
